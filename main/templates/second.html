@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+{% block content %}
+    <p>You are on the 2nd page</p>
+    <a href="/1">Link to 1st page</a>
+{% endblock content %}
+
+{% block image %}
+<div class = "container">
+    {% block result %}
+    {% endblock result %}
+    <div class="img-container">
+        <img src="{{ url_for('static', filename='pet_sematary.png') }}" alt="">    
+    </div>
+    {% if not a %}
+        <p><b>NO PETS IN PET HOTEL</b></p>
+    {% else %}
+        <p><b>DATA TABLE OF PETS</b></p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">вид питомца</th>
+                    <th scope="col">кличка</th>
+                    <th scope="col">возраст</th>
+                </tr>
+            </thead>
+            <tbody>
+        {% for p in a %}
+            <tr>
+                <form method="POST" action="">
+                <td>{{ p.id }}</td>
+                <input type="hidden" name="id" value="{{ p.id }}" />
+                <td> {{ p.kind }} </td>
+                <td> {{ p.nickname }} </td>
+                <td> {{ p.age }} </td>
+                <td><p><input type = "submit" value = "удалить" /></p></td>
+                </form>
+            </tr>
+        {% endfor %}
+        </tbody>
+        </table>
+    {% endif %}
+    </div>
+{% endblock image %}
+
+

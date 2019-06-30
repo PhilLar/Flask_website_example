@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+{% block content %}
+    <p>You are on the 1st page</p>
+    <a href="/2">Link to 2nd page</a>
+{% endblock content %}
+
+{% block form %}
+    <div class="container form">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <fieldset >
+                <legend class="border-bottom mb-4">Join Today</legend>
+                <div >
+                    {{ form.kind.label() }}
+
+                    {{ form.kind() }}
+                </div>
+                <div >
+                    {{ form.nickname.label() }}
+                    {{ form.nickname(class="form-control form-control-lg") }}
+                </div>
+                <div>
+                    {{ form.age.label() }}
+                        {{ form.age() }}
+                </div>
+            </fieldset>
+            <div>
+                {{ form.submit() }}
+            </div>
+        </form>
+    </div>
+{% endblock form %}
+
+
+
+
+
